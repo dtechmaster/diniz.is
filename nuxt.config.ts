@@ -63,6 +63,8 @@ export default defineNuxtConfig({
   routeRules: {
     // Needed to activate preview on Nuxt Studio
     '/': { prerender: false },
+    // RPG game is client-side only (Phaser requires browser)
+    '/*/rpg': { ssr: false, prerender: false },
   },
 
   experimental: {
@@ -70,6 +72,12 @@ export default defineNuxtConfig({
   },
 
   compatibilityDate: '2025-01-05',
+
+  vite: {
+    optimizeDeps: {
+      exclude: ['phaser'],
+    },
+  },
 
   nitro: {
     experimental: {
