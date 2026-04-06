@@ -1,0 +1,16 @@
+{
+  "title": "記事",
+  "description": "技術・研究・考察のまとめ",
+  "empty": "記事はまだありません。近日公開予定です。",
+  "not_found": "記事が見つかりません",
+  "not_found_description": "お探しの記事が見つかりませんでした。",
+  "back_link": "記事一覧に戻る",
+  "readingTime": "分で読めます",
+  "share": "記事をシェア",
+  "copy_link": "リンクをコピー",
+  "search_article": "記事を検索",
+  "blog": "ブログ",
+  "unknown_author": "著者不明",
+  "show_search": "検索",
+  "hide_search": "検索を隠す"
+}

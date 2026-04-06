@@ -27,7 +27,7 @@ export default defineNuxtConfig({
   css: ['~/assets/style/main.css'],
 
   site: {
-    url: 'https://canvas.hrcd.fr',
+    url: 'https://diniz.is',
     defaultLocale: 'en',
     indexable: true,
   },
@@ -78,7 +78,7 @@ export default defineNuxtConfig({
     prerender: {
       autoSubfolderIndex: false,
       crawlLinks: true,
-      routes: ['/en', '/fr'],
+      routes: ['/en', '/ja'],
     },
   },
 
@@ -97,7 +97,7 @@ export default defineNuxtConfig({
   i18n: {
     locales: [
       { code: 'en', name: 'English', language: 'en-US' },
-      { code: 'fr', name: 'French', language: 'fr-FR' },
+      { code: 'ja', name: 'Japanese', language: 'ja-JP' },
     ],
     detectBrowserLanguage: {
       useCookie: true,
@@ -131,8 +131,8 @@ export default defineNuxtConfig({
 
     repository: {
       provider: 'github',
-      owner: 'HugoRCD',
-      repo: 'canvas',
+      owner: 'dtechmaster',
+      repo: 'diniz.is',
       branch: 'main',
     },
   },

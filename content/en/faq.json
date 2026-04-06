@@ -3,49 +3,45 @@
   "subtitle": "Things I get asked a lot",
   "faqQuestions": [
     {
-      "title": "Services",
+      "title": "Background",
       "questions": [
         {
-          "label": "What services do you offer?",
-          "content": "I offer a range of services including web design, web development, branding, and photography. I can also help with SEO and social media marketing."
+          "label": "Tell me about your background.",
+          "content": "10+ years across AI, backend, embedded systems, and hardware-integrated platforms — in both enterprise and experimental environments. I started programming at 11, worked across the US and Japan, led engineering teams of 5–15 people, founded an R&D-driven AI company, and exited with profit. I combine technical depth with a research mindset and real delivery experience."
         },
         {
-          "label": "Can you teach me how to make a website?",
-          "content": "I don't offer courses at the moment, but I can recommend resources and advice to help you get the most out of your learning."
+          "label": "What kind of teams have you led?",
+          "content": "Both inside established organizations and within my own company. In Japan I led teams of 5–15 engineers across AI, embedded, and web systems — owning architecture, framework design, and coordination. As a founder I also built and led my own team across R&D projects and client work."
+        },
+        {
+          "label": "What happened with your company?",
+          "content": "I founded an R&D-driven AI and systems engineering company, ran it as an experimental operation delivering real products, and successfully sold its intellectual property at a profit. I now want to bring that founder-level ownership and R&D mindset into a new team."
         }
       ]
     },
     {
-      "title": "Pricing",
+      "title": "Skills & Work",
       "questions": [
         {
-          "label": "How much does a project cost?",
-          "content": "The cost of a project depends on many factors, such as the size of the project, the features, the development time, etc. The initial amount of my web services starts at 2000€, with an average between 3000€ and 10000€. For any other design or consulting service, I usually charge 450€ per day."
+          "label": "What technologies do you work with?",
+          "content": "TypeScript/JavaScript (Vue, Nuxt, Node.js), Python (AI/automation), C/C++ (embedded), C#/.NET, Java/Kotlin, OpenCV, TensorFlow, AWS/GCP/Azure, Docker, Linux, WebRTC."
         },
         {
-          "label": "How does payment work for a project?",
-          "content": "I ask for a 40% deposit before starting a project, and the remaining 60% after successful delivery. I accept payments by bank transfer, PayPal, etc..."
-        },
-        {
-          "label": "How long does a project take?",
-          "content": "It's difficult to give an exact estimate, as each project is different, but the majority of my past work has taken between 2 weeks and 2 months."
-        },
-        {
-          "label": "Do you offer discounts?",
-          "content": "I offer a 15% discount for students and non-profit organizations."
+          "label": "What domains have you shipped production work in?",
+          "content": "Computer vision and image analysis pipelines, medical posture analysis, autonomous driving systems, WebRTC live streaming, robot control, embedded systems (Arduino/Raspberry Pi/Jetson), matching platforms, EC platforms, and cloud backend systems."
         }
       ]
     },
     {
-      "title": "Personal",
+      "title": "Availability",
       "questions": [
         {
-          "label": "What do you enjoy most about this work?",
-          "content": "I love learning new things and being able to create just about anything from scratch, creating beautiful things that people will use and appreciate."
+          "label": "What roles are you open to?",
+          "content": "Senior Software Engineer, AI/Computer Vision Engineer, Systems Architect, Tech Lead, or Applied AI/Systems Researcher. Open to full-time, contract, or consulting. Available in Japan or remote."
         },
         {
-          "label": "Hobbies outside of work?",
-          "content": "I love what I do, so I usually spend a lot of time working on personal projects, photography, etc. I'm also a big sports fan. I often go to the gym and I recently started climbing!"
+          "label": "What languages do you speak?",
+          "content": "Portuguese (native), English (fluent, TOEIC 892), Japanese (business level, JLPT N2), and Spanish (conversational)."
         }
       ]
     }

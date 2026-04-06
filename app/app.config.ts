@@ -1,26 +1,26 @@
 export default defineAppConfig({
   global: {
-    meetingLink: 'https://cal.com/hugorcd/15min',
+    meetingLink: '',
     available: true,
   },
   profile: {
-    name: 'Hugo Richard',
-    job: 'Frontend Architect and Designer',
-    email: 'contact@hrcd.fr',
-    phone: '(+33) 6 21 56 22 18',
-    picture: 'https://avatars.githubusercontent.com/u/71938701?v=4',
+    name: 'Vitor Diniz',
+    job: 'AI Systems Architect / Senior Engineer / Applied Researcher',
+    email: 'diniz@djin-tech.com',
+    phone: '+81 70 8855 7401',
+    picture: '/avatar.jpg',
   },
   socials: {
-    github: 'https://github.com/HugoRCD',
-    twitter: 'https://twitter.com/HugoRCD__',
-    linkedin: 'https://www.linkedin.com/in/hugo-richard-0801',
-    instagram: 'https://www.instagram.com/hugo.rcd_',
-    spotify: 'https://open.spotify.com/user/yuvl0zpp3bpx4hne1ag7huten?si=df7ee2777c0c4fc4',
+    github: 'https://github.com/dtechmaster',
+    twitter: '',
+    linkedin: '',
+    instagram: '',
+    spotify: '',
   },
   seo: {
-    title: 'Canvas a Nuxt portfolio template',
-    description: 'Canvas is a simple but beautiful portfolio template for designers and developers built with Nuxt and Tailwind CSS. Made with ❤️ by HugoRCD',
-    url: 'https://canvas.hrcd.fr',
+    title: 'Vitor Diniz — AI Systems Architect & Senior Software Engineer',
+    description: 'Senior Software Engineer, Systems Architect, and Applied Researcher with 10+ years of experience across AI, backend, embedded systems, and hardware-integrated platforms. R&D mindset. Founder with successful exit.',
+    url: 'https://diniz.is',
   },
   ui: {
     colors: {

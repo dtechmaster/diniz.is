@@ -8,12 +8,14 @@ const socialMediaRegexMap = [
 ]
 
 const { socials } = useAppConfig()
-const mappedSocials = Object.values(socials).map((link) => {
-  const foundSocial = socialMediaRegexMap.find(social => social.regex.test(link))
-  if (!foundSocial) throw new Error(`No social media found for link: ${link}`)
-  const { name, icon } = foundSocial
-  return { name, link, icon }
-})
+const mappedSocials = Object.values(socials)
+  .filter((link): link is string => !!link)
+  .map((link) => {
+    const foundSocial = socialMediaRegexMap.find(social => social.regex.test(link))
+    if (!foundSocial) throw new Error(`No social media found for link: ${link}`)
+    const { name, icon } = foundSocial
+    return { name, link, icon }
+  })
 </script>
 
 <template>

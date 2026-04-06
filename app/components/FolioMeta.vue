@@ -1,15 +1,9 @@
 <script setup lang="ts">
-import type { ContentEnCollectionItem, ContentFrCollectionItem } from '@nuxt/content'
+import type { ContentEnCollectionItem, ContentJaCollectionItem } from '@nuxt/content'
 
-useScriptPlausibleAnalytics({
-  domain: 'canvas.hrcd.fr',
-  scriptInput: {
-    src: 'https://analytics.hrcd.fr/js/script.js',
-  },
-})
 
 const { page, isWriting } = defineProps<{
-  page: ContentEnCollectionItem | ContentFrCollectionItem
+  page: ContentEnCollectionItem | ContentJaCollectionItem
   isWriting: boolean
 }>()
 
@@ -53,7 +47,7 @@ useHead({
   link,
 })
 
-defineOgImage({ url: 'https://canvas.hrcd.fr/og.png', width: 1200, height: 630, alt: 'Home image' })
+defineOgImage({ url: `${seo.url}/og.png`, width: 1200, height: 630, alt: 'Home image' })
 </script>
 
 <template>

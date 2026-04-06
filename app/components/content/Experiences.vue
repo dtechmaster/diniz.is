@@ -26,10 +26,6 @@ defineProps({
           <p>
             {{ experience.date }}
           </p>
-          <span class="mx-1"> / </span>
-          <p>
-            {{ experience.company }}
-          </p>
         </div>
       </div>
     </div>
