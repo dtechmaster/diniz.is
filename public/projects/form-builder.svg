@@ -1,0 +1,63 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="450" viewBox="0 0 800 450">
+  <rect width="800" height="450" fill="#09090b"/>
+
+  <!-- subtle grid -->
+  <defs>
+    <pattern id="grid" width="32" height="32" patternUnits="userSpaceOnUse">
+      <path d="M 32 0 L 0 0 0 32" fill="none" stroke="rgba(255,255,255,0.03)" stroke-width="1"/>
+    </pattern>
+  </defs>
+  <rect width="800" height="450" fill="url(#grid)"/>
+
+  <!-- glow -->
+  <radialGradient id="glow" cx="50%" cy="40%" r="45%">
+    <stop offset="0%" stop-color="rgba(255,255,255,0.06)"/>
+    <stop offset="100%" stop-color="rgba(255,255,255,0)"/>
+  </radialGradient>
+  <rect width="800" height="450" fill="url(#glow)"/>
+
+  <!-- header bar -->
+  <rect x="0" y="0" width="800" height="44" fill="rgba(255,255,255,0.02)" rx="0"/>
+  <line x1="0" y1="44" x2="800" y2="44" stroke="rgba(255,255,255,0.05)" stroke-width="1"/>
+  <text x="24" y="27" font-family="monospace" font-size="11" fill="rgba(255,255,255,0.25)">← diniz.is</text>
+  <text x="105" y="27" font-family="monospace" font-size="11" fill="rgba(255,255,255,0.1)">/</text>
+  <text x="118" y="27" font-family="monospace" font-size="11" fill="rgba(255,255,255,0.4)" font-weight="600">Form Builder</text>
+  <text x="660" y="27" font-family="monospace" font-size="10" fill="rgba(255,255,255,0.15)">powered by Groq</text>
+
+  <!-- prompt label -->
+  <text x="80" y="98" font-family="sans-serif" font-size="13" fill="rgba(255,255,255,0.5)">Describe your form</text>
+
+  <!-- prompt textarea -->
+  <rect x="80" y="110" width="640" height="72" rx="10" fill="rgba(255,255,255,0.03)" stroke="rgba(255,255,255,0.08)" stroke-width="1"/>
+  <text x="96" y="132" font-family="monospace" font-size="11" fill="rgba(255,255,255,0.2)">"A job application with name, email, years of experience, position..."</text>
+
+  <!-- generate button -->
+  <rect x="560" y="198" width="160" height="34" rx="8" fill="rgba(255,255,255,0.92)"/>
+  <text x="605" y="220" font-family="sans-serif" font-size="12" fill="#09090b" font-weight="600">Generate form →</text>
+
+  <!-- divider -->
+  <line x1="80" y1="248" x2="720" y2="248" stroke="rgba(255,255,255,0.05)" stroke-width="1"/>
+
+  <!-- generated form title -->
+  <text x="80" y="278" font-family="sans-serif" font-size="16" fill="rgba(255,255,255,0.85)" font-weight="600">Job Application</text>
+
+  <!-- field 1 -->
+  <text x="80" y="308" font-family="sans-serif" font-size="11" fill="rgba(255,255,255,0.4)">Full Name *</text>
+  <rect x="80" y="314" width="288" height="30" rx="8" fill="rgba(255,255,255,0.03)" stroke="rgba(255,255,255,0.08)" stroke-width="1"/>
+
+  <!-- field 2 -->
+  <text x="432" y="308" font-family="sans-serif" font-size="11" fill="rgba(255,255,255,0.4)">Email *</text>
+  <rect x="432" y="314" width="288" height="30" rx="8" fill="rgba(255,255,255,0.03)" stroke="rgba(255,255,255,0.08)" stroke-width="1"/>
+
+  <!-- field 3 -->
+  <text x="80" y="362" font-family="sans-serif" font-size="11" fill="rgba(255,255,255,0.4)">Years of Experience</text>
+  <rect x="80" y="368" width="140" height="30" rx="8" fill="rgba(255,255,255,0.03)" stroke="rgba(255,255,255,0.08)" stroke-width="1"/>
+
+  <!-- field 4 -->
+  <text x="264" y="362" font-family="sans-serif" font-size="11" fill="rgba(255,255,255,0.4)">Position</text>
+  <rect x="264" y="368" width="200" height="30" rx="8" fill="rgba(255,255,255,0.03)" stroke="rgba(255,255,255,0.08)" stroke-width="1"/>
+
+  <!-- submit toggle -->
+  <rect x="80" y="414" width="14" height="14" rx="3" fill="rgba(255,255,255,0.1)" stroke="rgba(255,255,255,0.15)" stroke-width="1"/>
+  <text x="100" y="425" font-family="sans-serif" font-size="11" fill="rgba(255,255,255,0.3)">Add submit action</text>
+</svg>
