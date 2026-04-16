@@ -76,6 +76,7 @@ export default defineNuxtConfig({
   vite: {
     optimizeDeps: {
       exclude: ['phaser'],
+      include: ['slugify'],
     },
   },
 

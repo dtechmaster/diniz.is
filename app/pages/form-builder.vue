@@ -1,10 +1,11 @@
 <script setup lang="ts">
 //#region Meta
-definePageMeta({ layout: false })
+definePageMeta({ layout: 'default' })
+useHead({ title: 'AI Form Builder' })
 //#endregion
 
 //#region Types
-interface Field {
+interface IField {
   key: string
   label: string
   type: 'string' | 'email' | 'tel' | 'number' | 'boolean' | 'date' | 'textarea' | 'select'
@@ -14,10 +15,10 @@ interface Field {
   options?: string[]
 }
 
-interface FormSchema {
+interface IFormSchema {
   title: string
   description?: string
-  fields: Field[]
+  fields: IField[]
 }
 //#endregion
 
@@ -26,7 +27,7 @@ const step = ref<'prompt' | 'form'>('prompt')
 const prompt = ref('')
 const loading = ref(false)
 const genError = ref('')
-const schema = ref<FormSchema | null>(null)
+const schema = ref<IFormSchema | null>(null)
 const formData = ref<Record<string, any>>({})
 const validationErrors = ref<Record<string, string>>({})
 
@@ -37,6 +38,17 @@ const submitUrl = ref('https://api.example.com/submit')
 const submitting = ref(false)
 const submitError = ref('')
 const submitted = ref(false)
+
+const EXAMPLES = [
+  'Contact form with name, email and message',
+  'Event RSVP with name, dietary restrictions and +1 option',
+  'Bug report with title, severity and steps to reproduce',
+]
+
+const SUBMIT_OPTIONS = [
+  { value: 'email', label: 'Open email client' },
+  { value: 'api', label: 'POST to API' },
+]
 //#endregion
 
 //#region Generation
@@ -45,17 +57,20 @@ async function generateForm() {
   loading.value = true
   genError.value = ''
   submitted.value = false
+
   try {
-    const result = await $fetch<FormSchema>('/api/generate-form', {
+    const result = await $fetch<IFormSchema>('/api/generate-form', {
       method: 'POST',
       body: { prompt: prompt.value },
     })
+
     schema.value = result
     formData.value = {}
     validationErrors.value = {}
-    for (const field of result.fields) {
+
+    for (const field of result.fields)
       formData.value[field.key] = field.type === 'boolean' ? false : field.type === 'number' ? null : ''
-    }
+
     step.value = 'form'
   }
   catch (e: any) {
@@ -73,6 +88,11 @@ function reset() {
   validationErrors.value = {}
   submitted.value = false
   submitError.value = ''
+  showSubmit.value = false
+}
+
+function useExample(ex: string) {
+  prompt.value = ex
 }
 //#endregion
 
@@ -81,17 +101,23 @@ function validate() {
   if (!schema.value) return false
   validationErrors.value = {}
   let valid = true
+
   for (const field of schema.value.fields) {
     const val = formData.value[field.key]
-    if (field.required && (val === '' || val === null || val === undefined || (field.type === 'boolean' && !val))) {
+    const isEmpty = val === '' || val === null || val === undefined || (field.type === 'boolean' && !val)
+
+    if (field.required && isEmpty) {
       validationErrors.value[field.key] = `${field.label} is required`
       valid = false
+      continue
     }
+
     if (field.type === 'email' && val && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(val)) {
       validationErrors.value[field.key] = 'Invalid email address'
       valid = false
     }
   }
+
   return valid
 }
 //#endregion
@@ -101,14 +127,17 @@ function submitViaEmail() {
   const body = schema.value!.fields
     .map(f => `${f.label}: ${formData.value[f.key] ?? ''}`)
     .join('\n')
-  const url = `mailto:${submitEmail.value}?subject=${encodeURIComponent(schema.value!.title)}&body=${encodeURIComponent(body)}`
-  window.open(url)
+
+  window.open(
+    `mailto:${submitEmail.value}?subject=${encodeURIComponent(schema.value!.title)}&body=${encodeURIComponent(body)}`,
+  )
   submitted.value = true
 }
 
 async function submitViaAPI() {
   submitting.value = true
   submitError.value = ''
+
   try {
     await $fetch(submitUrl.value, {
       method: 'POST',
@@ -131,256 +160,233 @@ function handleSubmit() {
 }
 //#endregion
 
-//#region Input type mapping
-function inputType(field: Field): string {
-  const map: Record<string, string> = { email: 'email', tel: 'tel', number: 'number', date: 'date', string: 'text' }
+//#region Helpers
+function inputType(field: IField): string {
+  const map: Record<string, string> = { email: 'email', tel: 'tel', number: 'number', date: 'date' }
   return map[field.type] ?? 'text'
+}
+
+function selectItems(field: IField) {
+  return field.options?.map(o => ({ label: o, value: o })) ?? []
 }
 //#endregion
 </script>
 
 <template>
-  <!--#region Layout -->
-  <div class="min-h-screen bg-zinc-950 text-white font-geist">
+  <section class="mx-auto mt-4 flex max-w-2xl flex-col px-6 py-12 sm:mt-12">
 
-    <!--#region Header -->
-    <header class="border-b border-white/5 px-6 py-4 flex items-center justify-between">
-      <div class="flex items-center gap-3">
-        <NuxtLink to="/en" class="text-zinc-500 hover:text-white transition-colors text-sm">
-          ← diniz.is
-        </NuxtLink>
-        <span class="text-zinc-700">/</span>
-        <span class="text-sm font-medium">Form Builder</span>
+    <!--#region Prompt Step -->
+    <div v-if="step === 'prompt'" class="flex flex-col gap-8">
+
+      <div class="flex flex-col gap-2">
+        <h1 class="font-newsreader italic text-white-shadow text-4xl">
+          AI Form Builder
+        </h1>
+        <p class="text-muted text-sm leading-relaxed">
+          Describe the form you need — Groq generates a schema and renders it instantly.
+        </p>
       </div>
-      <div class="text-xs text-zinc-600 font-mono">powered by Groq</div>
-    </header>
+
+      <div class="flex flex-col gap-3">
+        <UTextarea
+          v-model="prompt"
+          :rows="4"
+          placeholder='e.g. "A job application with name, email, years of experience and availability"'
+          autoresize
+          @keydown.meta.enter="generateForm"
+          @keydown.ctrl.enter="generateForm"
+        />
+
+        <UAlert
+          v-if="genError"
+          color="error"
+          variant="soft"
+          :description="genError"
+        />
+
+        <div class="flex items-center justify-between">
+          <span class="text-xs text-muted">⌘↵ to generate</span>
+          <UButton
+            :loading="loading"
+            :disabled="!prompt.trim()"
+            label="Generate form"
+            trailing-icon="heroicons:arrow-right"
+            color="neutral"
+            @click="generateForm"
+          />
+        </div>
+      </div>
+
+      <!--#region Examples -->
+      <div class="flex flex-col gap-3">
+        <p class="text-xs text-muted uppercase tracking-widest">Examples</p>
+        <div class="flex flex-wrap gap-2">
+          <UButton
+            v-for="ex in EXAMPLES"
+            :key="ex"
+            :label="ex"
+            size="xs"
+            color="neutral"
+            variant="outline"
+            @click="useExample(ex)"
+          />
+        </div>
+      </div>
+      <!--#endregion -->
+
+    </div>
     <!--#endregion -->
 
-    <main class="mx-auto max-w-2xl px-6 py-12">
+    <!--#region Form Step -->
+    <div v-else-if="step === 'form' && schema" class="flex flex-col gap-8">
 
-      <!--#region Prompt Step -->
-      <div v-if="step === 'prompt'" class="flex flex-col gap-8">
-        <div class="flex flex-col gap-2">
-          <h1 class="text-2xl font-semibold tracking-tight">AI Form Builder</h1>
-          <p class="text-zinc-400 text-sm leading-relaxed">
-            Describe the form you need. Groq will generate a schema and render it instantly.
+      <!--#region Form Header -->
+      <div class="flex items-start justify-between gap-4">
+        <div class="flex flex-col gap-1">
+          <h1 class="font-newsreader italic text-white-shadow text-3xl">
+            {{ schema.title }}
+          </h1>
+          <p v-if="schema.description" class="text-muted text-sm">
+            {{ schema.description }}
           </p>
         </div>
+        <UButton
+          label="Regenerate"
+          leading-icon="heroicons:arrow-left"
+          size="xs"
+          color="neutral"
+          variant="ghost"
+          @click="reset"
+        />
+      </div>
+      <!--#endregion -->
 
-        <div class="flex flex-col gap-3">
-          <textarea
-            v-model="prompt"
-            rows="4"
-            placeholder='e.g. "A job application form with name, email, resume link, years of experience, and availability date"'
-            class="w-full rounded-lg border border-white/10 bg-zinc-900 px-4 py-3 text-sm text-white placeholder-zinc-600 resize-none focus:border-white/20 focus:outline-none transition-colors"
-            @keydown.meta.enter="generateForm"
-            @keydown.ctrl.enter="generateForm"
+      <!--#region Submitted State -->
+      <div
+        v-if="submitted"
+        class="flex flex-col items-center gap-4 rounded-xl border border-green-500/20 bg-green-500/5 py-12 text-center"
+      >
+        <UIcon name="heroicons:check-circle" class="size-10 text-green-400" />
+        <div>
+          <p class="font-medium text-green-300">
+            {{ submitType === 'email' ? 'Email client opened' : 'Submitted successfully' }}
+          </p>
+          <p class="text-sm text-muted mt-1">Form data has been sent.</p>
+        </div>
+        <UButton label="Submit again" size="xs" color="neutral" variant="ghost" @click="submitted = false" />
+      </div>
+      <!--#endregion -->
+
+      <!--#region Dynamic Form -->
+      <form v-else class="flex flex-col gap-5" @submit.prevent>
+
+        <!--#region Fields -->
+        <UFormField
+          v-for="field in schema.fields"
+          :key="field.key"
+          :label="field.label"
+          :description="field.description"
+          :error="validationErrors[field.key]"
+          :required="field.required"
+        >
+          <!--#region Boolean -->
+          <UCheckbox
+            v-if="field.type === 'boolean'"
+            v-model="formData[field.key]"
+            :label="field.placeholder"
           />
-          <div class="flex items-center justify-between">
-            <span v-if="genError" class="text-xs text-red-400">{{ genError }}</span>
-            <span v-else class="text-xs text-zinc-600">⌘↵ to generate</span>
-            <button
-              :disabled="loading || !prompt.trim()"
-              class="flex items-center gap-2 rounded-lg bg-white px-4 py-2 text-sm font-medium text-zinc-900 transition-all hover:bg-zinc-100 disabled:cursor-not-allowed disabled:opacity-40"
-              @click="generateForm"
-            >
-              <span v-if="loading" class="inline-block size-3.5 animate-spin rounded-full border-2 border-zinc-400 border-t-zinc-900" />
-              <span>{{ loading ? 'Generating…' : 'Generate form →' }}</span>
-            </button>
-          </div>
-        </div>
-
-        <!--#region Examples -->
-        <div class="flex flex-col gap-2">
-          <p class="text-xs text-zinc-600 uppercase tracking-widest">Examples</p>
-          <div class="flex flex-wrap gap-2">
-            <button
-              v-for="ex in [
-                'Contact form with name, email and message',
-                'Event RSVP with name, dietary restrictions, +1 option',
-                'Bug report with title, severity, steps to reproduce',
-              ]"
-              :key="ex"
-              class="rounded-md border border-white/5 bg-zinc-900 px-3 py-1.5 text-xs text-zinc-400 hover:border-white/10 hover:text-white transition-colors"
-              @click="prompt = ex"
-            >
-              {{ ex }}
-            </button>
-          </div>
-        </div>
-        <!--#endregion -->
-      </div>
-      <!--#endregion -->
-
-      <!--#region Form Step -->
-      <div v-else-if="step === 'form' && schema" class="flex flex-col gap-8">
-
-        <!--#region Form Header -->
-        <div class="flex items-start justify-between gap-4">
-          <div class="flex flex-col gap-1">
-            <h1 class="text-2xl font-semibold tracking-tight">{{ schema.title }}</h1>
-            <p v-if="schema.description" class="text-zinc-400 text-sm">{{ schema.description }}</p>
-          </div>
-          <button
-            class="shrink-0 rounded-md border border-white/5 px-3 py-1.5 text-xs text-zinc-500 hover:text-white hover:border-white/10 transition-colors"
-            @click="reset"
-          >
-            ← Regenerate
-          </button>
-        </div>
-        <!--#endregion -->
-
-        <!--#region Submitted State -->
-        <div v-if="submitted" class="flex flex-col items-center gap-4 rounded-xl border border-green-500/20 bg-green-500/5 py-12 text-center">
-          <div class="size-12 rounded-full border border-green-500/30 bg-green-500/10 flex items-center justify-center">
-            <UIcon name="heroicons:check" class="size-5 text-green-400" />
-          </div>
-          <div>
-            <p class="font-medium text-green-300">{{ submitType === 'email' ? 'Email client opened' : 'Submitted successfully' }}</p>
-            <p class="text-sm text-zinc-500 mt-1">Form data has been sent.</p>
-          </div>
-          <button class="text-xs text-zinc-500 hover:text-white transition-colors underline underline-offset-2" @click="submitted = false">
-            Submit again
-          </button>
-        </div>
-        <!--#endregion -->
-
-        <!--#region Dynamic Form Fields -->
-        <form v-else class="flex flex-col gap-5" @submit.prevent="showSubmit && handleSubmit()">
-          <div v-for="field in schema.fields" :key="field.key" class="flex flex-col gap-1.5">
-            <label :for="field.key" class="text-sm font-medium text-zinc-200">
-              {{ field.label }}
-              <span v-if="field.required" class="ml-1 text-zinc-500">*</span>
-            </label>
-
-            <!--#region Boolean (checkbox) -->
-            <div v-if="field.type === 'boolean'" class="flex items-center gap-2">
-              <input
-                :id="field.key"
-                v-model="formData[field.key]"
-                type="checkbox"
-                class="size-4 rounded border-white/10 bg-zinc-900 accent-white cursor-pointer"
-              >
-              <span v-if="field.placeholder" class="text-sm text-zinc-400">{{ field.placeholder }}</span>
-            </div>
-            <!--#endregion -->
-
-            <!--#region Select -->
-            <select
-              v-else-if="field.type === 'select'"
-              :id="field.key"
-              v-model="formData[field.key]"
-              class="w-full rounded-lg border bg-zinc-900 px-4 py-2.5 text-sm text-white focus:outline-none transition-colors"
-              :class="validationErrors[field.key] ? 'border-red-500/50 focus:border-red-500' : 'border-white/10 focus:border-white/20'"
-            >
-              <option value="" disabled>{{ field.placeholder ?? 'Select an option' }}</option>
-              <option v-for="opt in field.options" :key="opt" :value="opt">{{ opt }}</option>
-            </select>
-            <!--#endregion -->
-
-            <!--#region Textarea -->
-            <textarea
-              v-else-if="field.type === 'textarea'"
-              :id="field.key"
-              v-model="formData[field.key]"
-              rows="3"
-              :placeholder="field.placeholder"
-              class="w-full rounded-lg border bg-zinc-900 px-4 py-2.5 text-sm text-white placeholder-zinc-600 resize-none focus:outline-none transition-colors"
-              :class="validationErrors[field.key] ? 'border-red-500/50 focus:border-red-500' : 'border-white/10 focus:border-white/20'"
-            />
-            <!--#endregion -->
-
-            <!--#region Standard Inputs -->
-            <input
-              v-else
-              :id="field.key"
-              v-model="formData[field.key]"
-              :type="inputType(field)"
-              :placeholder="field.placeholder"
-              class="w-full rounded-lg border bg-zinc-900 px-4 py-2.5 text-sm text-white placeholder-zinc-600 focus:outline-none transition-colors"
-              :class="validationErrors[field.key] ? 'border-red-500/50 focus:border-red-500' : 'border-white/10 focus:border-white/20'"
-            >
-            <!--#endregion -->
-
-            <p v-if="validationErrors[field.key]" class="text-xs text-red-400">{{ validationErrors[field.key] }}</p>
-            <p v-else-if="field.description" class="text-xs text-zinc-500">{{ field.description }}</p>
-          </div>
-
-          <!--#region Submit Configuration Toggle -->
-          <div class="mt-2 border-t border-white/5 pt-6 flex flex-col gap-4">
-            <button
-              type="button"
-              class="flex items-center gap-2 text-sm text-zinc-500 hover:text-white transition-colors"
-              @click="showSubmit = !showSubmit"
-            >
-              <span
-                class="inline-flex size-4 items-center justify-center rounded border transition-colors"
-                :class="showSubmit ? 'border-white/20 bg-white/10' : 'border-white/10'"
-              >
-                <UIcon v-if="showSubmit" name="heroicons:check" class="size-2.5 text-white" />
-              </span>
-              Add submit action
-            </button>
-
-            <!--#region Submit Config -->
-            <div v-if="showSubmit" class="flex flex-col gap-4 rounded-xl border border-white/5 bg-zinc-900/50 p-4">
-              <div class="flex items-center gap-3">
-                <button
-                  type="button"
-                  v-for="opt in (['email', 'api'] as const)"
-                  :key="opt"
-                  class="flex items-center gap-1.5 rounded-md border px-3 py-1.5 text-xs font-medium transition-colors"
-                  :class="submitType === opt ? 'border-white/20 bg-white/10 text-white' : 'border-white/5 text-zinc-500 hover:text-zinc-300'"
-                  @click="submitType = opt"
-                >
-                  <UIcon :name="opt === 'email' ? 'heroicons:envelope' : 'heroicons:cloud-arrow-up'" class="size-3" />
-                  {{ opt === 'email' ? 'Open email client' : 'POST to API' }}
-                </button>
-              </div>
-
-              <div v-if="submitType === 'email'" class="flex flex-col gap-1.5">
-                <label class="text-xs text-zinc-500">Recipient email</label>
-                <input
-                  v-model="submitEmail"
-                  type="email"
-                  placeholder="contact@example.com"
-                  class="w-full rounded-lg border border-white/10 bg-zinc-900 px-3 py-2 text-sm text-white placeholder-zinc-600 focus:border-white/20 focus:outline-none"
-                >
-              </div>
-
-              <div v-else class="flex flex-col gap-1.5">
-                <label class="text-xs text-zinc-500">API endpoint (POST)</label>
-                <input
-                  v-model="submitUrl"
-                  type="url"
-                  placeholder="https://api.example.com/submit"
-                  class="w-full rounded-lg border border-white/10 bg-zinc-900 px-3 py-2 text-sm text-white placeholder-zinc-600 focus:border-white/20 focus:outline-none"
-                >
-                <p class="text-xs text-zinc-600">Sends <code class="text-zinc-400">{"payload": {...formData}}</code></p>
-              </div>
-
-              <p v-if="submitError" class="text-xs text-red-400">{{ submitError }}</p>
-
-              <button
-                type="button"
-                :disabled="submitting"
-                class="flex items-center justify-center gap-2 rounded-lg bg-white px-4 py-2.5 text-sm font-medium text-zinc-900 transition-all hover:bg-zinc-100 disabled:opacity-40 disabled:cursor-not-allowed"
-                @click="handleSubmit"
-              >
-                <span v-if="submitting" class="inline-block size-3.5 animate-spin rounded-full border-2 border-zinc-400 border-t-zinc-900" />
-                {{ submitType === 'email' ? 'Open email client →' : 'Submit →' }}
-              </button>
-            </div>
-            <!--#endregion -->
-          </div>
           <!--#endregion -->
-        </form>
+
+          <!--#region Select -->
+          <USelect
+            v-else-if="field.type === 'select'"
+            v-model="formData[field.key]"
+            :items="selectItems(field)"
+            :placeholder="field.placeholder ?? 'Select an option'"
+            class="w-full"
+          />
+          <!--#endregion -->
+
+          <!--#region Textarea -->
+          <UTextarea
+            v-else-if="field.type === 'textarea'"
+            v-model="formData[field.key]"
+            :placeholder="field.placeholder"
+            :rows="3"
+            autoresize
+            class="w-full"
+          />
+          <!--#endregion -->
+
+          <!--#region Standard input -->
+          <UInput
+            v-else
+            v-model="formData[field.key]"
+            :type="inputType(field)"
+            :placeholder="field.placeholder"
+            class="w-full"
+          />
+          <!--#endregion -->
+        </UFormField>
         <!--#endregion -->
 
-      </div>
+        <USeparator class="my-2" />
+
+        <!--#region Submit Toggle -->
+        <UButton
+          :label="showSubmit ? 'Remove submit action' : 'Add submit action'"
+          :leading-icon="showSubmit ? 'heroicons:minus' : 'heroicons:plus'"
+          size="xs"
+          color="neutral"
+          variant="ghost"
+          class="self-start"
+          @click="showSubmit = !showSubmit"
+        />
+        <!--#endregion -->
+
+        <!--#region Submit Config -->
+        <div v-if="showSubmit" class="flex flex-col gap-4 rounded-xl border border-default bg-muted/30 p-4">
+          <URadioGroup
+            v-model="submitType"
+            :items="SUBMIT_OPTIONS"
+            orientation="horizontal"
+          />
+
+          <UFormField v-if="submitType === 'email'" label="Recipient email">
+            <UInput v-model="submitEmail" type="email" placeholder="contact@example.com" class="w-full" />
+          </UFormField>
+
+          <UFormField
+            v-else
+            label="API endpoint"
+            description='Sends {"payload": {...formData}} as JSON body'
+          >
+            <UInput v-model="submitUrl" type="url" placeholder="https://api.example.com/submit" class="w-full" />
+          </UFormField>
+
+          <UAlert
+            v-if="submitError"
+            color="error"
+            variant="soft"
+            :description="submitError"
+          />
+
+          <UButton
+            :loading="submitting"
+            :label="submitType === 'email' ? 'Open email client' : 'Submit'"
+            trailing-icon="heroicons:arrow-right"
+            color="neutral"
+            class="self-end"
+            @click="handleSubmit"
+          />
+        </div>
+        <!--#endregion -->
+
+      </form>
       <!--#endregion -->
 
-    </main>
-  </div>
-  <!--#endregion -->
+    </div>
+    <!--#endregion -->
+
+  </section>
 </template>
