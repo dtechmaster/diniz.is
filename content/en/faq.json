@@ -11,7 +11,7 @@
         },
         {
           "label": "What kind of teams have you led?",
-          "content": "Teams of 5–15 engineers across AI, backend, and embedded systems. Focus on architecture, system design, and aligning execution with real-world constraints."
+          "content": "Teams of 5–15 engineers across AI, backend, and embedded systems. Focus on architecture and aligning execution with real-world constraints."
         },
         {
           "label": "What happened with your company?",
@@ -37,7 +37,7 @@
       "questions": [
         {
           "label": "What work are you open to?",
-          "content": "System diagnosis and architecture design, AI and automation strategy, high-impact consulting — short-term or recurring. Also open to contract and selective full-time roles."
+          "content": "System diagnosis & architecture, AI and automation strategy, high-impact consulting — short-term or recurring. Also open to contract and selective full-time roles."
         },
         {
           "label": "What languages do you speak?",
