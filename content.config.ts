@@ -102,11 +102,16 @@ export const collections = {
     type: 'data',
     source: 'stack.json',
     schema: z.object({
-      items: z.array(
+      categories: z.array(
         z.object({
           name: z.string().nonempty(),
-          link: z.string().url(),
-          icon: z.string().nonempty(),
+          items: z.array(
+            z.object({
+              name: z.string().nonempty(),
+              link: z.string().url(),
+              icon: z.string().nonempty(),
+            }),
+          ),
         }),
       ),
     }),

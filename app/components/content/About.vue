@@ -39,8 +39,8 @@ const stack = await queryCollection('stack').first()
       mdc-unwrap="p"
     />
     <Divider class="my-8" />
-    <div class="flex flex-col gap-3">
-      <div class="mb-6 flex flex-col gap-1">
+    <div class="flex flex-col gap-8">
+      <div class="flex flex-col gap-1">
         <h3 class="text-white-shadow font-newsreader italic text-3xl">
           <slot
             name="stack_title"
@@ -54,27 +54,31 @@ const stack = await queryCollection('stack').first()
           />
         </p>
       </div>
-      <div class="flex flex-wrap gap-4">
-        <SpotlightCard
-          v-for="item in stack!.items"
-          :key="item.name"
-          white
-        >
+      <div
+        v-for="category in stack!.categories"
+        :key="category.name"
+        class="flex flex-col gap-3"
+      >
+        <h4 class="text-xs font-semibold uppercase tracking-widest text-muted">
+          {{ category.name }}
+        </h4>
+        <div class="flex flex-wrap gap-2">
           <NuxtLink
+            v-for="item in category.items"
+            :key="item.name"
             :to="item.link"
             target="_blank"
-            :aria-label="item.name + ' link'"
-            class="flex gap-2 p-6"
+            :aria-label="item.name"
+            class="flex items-center gap-2 rounded-lg border border-[var(--ui-border)] bg-[var(--ui-bg-muted)] px-3 py-2 text-sm text-[var(--ui-text-toned)] transition-colors hover:border-[var(--ui-border-accented)] hover:text-[var(--ui-text)]"
           >
             <UIcon
               :name="item.icon"
-              class="size-9"
+              class="size-4 shrink-0"
               :font-controlled="false"
-              :alt="item.name + ' logo'"
-              :aria-label="item.name + ' logo'"
             />
+            <span>{{ item.name }}</span>
           </NuxtLink>
-        </SpotlightCard>
+        </div>
       </div>
     </div>
   </section>

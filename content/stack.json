@@ -1,64 +1,145 @@
 {
-  "items": [
+  "categories": [
     {
-      "name": "Nuxt",
-      "link": "https://nuxt.com/",
-      "icon": "custom:nuxt"
+      "name": "Frontend",
+      "items": [
+        { "name": "Nuxt 3", "link": "https://nuxt.com/", "icon": "custom:nuxt" },
+        { "name": "Vue 3", "link": "https://vuejs.org/", "icon": "simple-icons:vuedotjs" },
+        { "name": "Vuetify", "link": "https://vuetifyjs.com/", "icon": "simple-icons:vuetify" },
+        { "name": "Element UI", "link": "https://element-plus.org/", "icon": "lucide:layout-template" },
+        { "name": "Nuxt UI", "link": "https://ui.nuxt.com/", "icon": "custom:nuxt" },
+        { "name": "Electron", "link": "https://www.electronjs.org/", "icon": "simple-icons:electron" },
+        { "name": "Capacitor", "link": "https://capacitorjs.com/", "icon": "simple-icons:capacitor" }
+      ]
     },
     {
-      "name": "Vue",
-      "link": "https://vuejs.org/",
-      "icon": "custom:vue"
+      "name": "Runtime & Language",
+      "items": [
+        { "name": "Deno", "link": "https://deno.com/", "icon": "simple-icons:deno" },
+        { "name": "Bun", "link": "https://bun.sh/", "icon": "simple-icons:bun" },
+        { "name": "Node.js", "link": "https://nodejs.org/", "icon": "simple-icons:nodedotjs" },
+        { "name": "TypeScript", "link": "https://www.typescriptlang.org/", "icon": "simple-icons:typescript" },
+        { "name": "JavaScript", "link": "https://developer.mozilla.org/en-US/docs/Web/JavaScript", "icon": "simple-icons:javascript" }
+      ]
     },
     {
-      "name": "TypeScript",
-      "link": "https://www.typescriptlang.org/",
-      "icon": "custom:typescript"
+      "name": "Backend & Data",
+      "items": [
+        { "name": "Supabase", "link": "https://supabase.com/", "icon": "simple-icons:supabase" },
+        { "name": "PostgreSQL", "link": "https://www.postgresql.org/", "icon": "simple-icons:postgresql" },
+        { "name": "pgvector", "link": "https://github.com/pgvector/pgvector", "icon": "simple-icons:postgresql" },
+        { "name": "Zod", "link": "https://zod.dev/", "icon": "lucide:shield-check" },
+        { "name": "Zod2SQL", "link": "https://github.com/", "icon": "lucide:database" },
+        { "name": "RPC (Postgres)", "link": "https://www.postgresql.org/docs/current/sql-createfunction.html", "icon": "lucide:zap" }
+      ]
     },
     {
-      "name": "Python",
-      "link": "https://www.python.org/",
-      "icon": "custom:python"
+      "name": "DevOps & Infra",
+      "items": [
+        { "name": "Docker", "link": "https://www.docker.com/", "icon": "simple-icons:docker" },
+        { "name": "Docker Compose", "link": "https://docs.docker.com/compose/", "icon": "simple-icons:docker" },
+        { "name": "CapRover", "link": "https://caprover.com/", "icon": "lucide:server" },
+        { "name": "NGINX", "link": "https://nginx.org/", "icon": "simple-icons:nginx" },
+        { "name": "Fly.io", "link": "https://fly.io/", "icon": "simple-icons:flyio" },
+        { "name": "Vercel", "link": "https://vercel.com/", "icon": "custom:vercel" }
+      ]
     },
     {
-      "name": "TailwindCSS",
-      "link": "https://tailwindcss.com/",
-      "icon": "custom:tailwind"
+      "name": "AI & ML",
+      "items": [
+        { "name": "Claude Code", "link": "https://www.anthropic.com/claude", "icon": "simple-icons:anthropic" },
+        { "name": "Anthropic API", "link": "https://www.anthropic.com/", "icon": "simple-icons:anthropic" },
+        { "name": "LangChain JS", "link": "https://js.langchain.com/", "icon": "simple-icons:langchain" },
+        { "name": "Groq API", "link": "https://groq.com/", "icon": "simple-icons:groq" },
+        { "name": "OpenAI APIs", "link": "https://openai.com/", "icon": "simple-icons:openai" },
+        { "name": "Ollama", "link": "https://ollama.com/", "icon": "simple-icons:ollama" },
+        { "name": "Hugging Face", "link": "https://huggingface.co/", "icon": "simple-icons:huggingface" },
+        { "name": "ONNX", "link": "https://onnx.ai/", "icon": "simple-icons:onnx" },
+        { "name": "Create ML", "link": "https://developer.apple.com/machine-learning/create-ml/", "icon": "simple-icons:apple" },
+        { "name": "Qwen", "link": "https://qwenlm.github.io/", "icon": "lucide:brain" },
+        { "name": "Aider CLI", "link": "https://aider.chat/", "icon": "lucide:terminal" },
+        { "name": "OpenCode CLI", "link": "https://opencode.ai/", "icon": "lucide:terminal" }
+      ]
     },
     {
-      "name": "AWS",
-      "link": "https://aws.amazon.com/",
-      "icon": "custom:aws"
+      "name": "Automation & Scraping",
+      "items": [
+        { "name": "Puppeteer", "link": "https://pptr.dev/", "icon": "simple-icons:puppeteer" },
+        { "name": "Playwright", "link": "https://playwright.dev/", "icon": "simple-icons:playwright" },
+        { "name": "Chrome DevTools", "link": "https://developer.chrome.com/docs/devtools/", "icon": "simple-icons:googlechrome" },
+        { "name": "n8n", "link": "https://n8n.io/", "icon": "simple-icons:n8n" }
+      ]
     },
     {
-      "name": "Docker",
-      "link": "https://www.docker.com/",
-      "icon": "custom:docker"
+      "name": "Messaging & Bots",
+      "items": [
+        { "name": "Slack API", "link": "https://api.slack.com/", "icon": "simple-icons:slack" },
+        { "name": "LINE bots", "link": "https://developers.line.biz/", "icon": "simple-icons:line" },
+        { "name": "WhatsApp", "link": "https://www.whatsapp.com/", "icon": "simple-icons:whatsapp" },
+        { "name": "Chatwoot", "link": "https://www.chatwoot.com/", "icon": "simple-icons:chatwoot" },
+        { "name": "Mattermost", "link": "https://mattermost.com/", "icon": "simple-icons:mattermost" },
+        { "name": "Focalboard", "link": "https://www.focalboard.com/", "icon": "simple-icons:mattermost" }
+      ]
     },
     {
-      "name": "Vercel",
-      "link": "https://vercel.com/",
-      "icon": "custom:vercel"
+      "name": "Realtime & Scheduling",
+      "items": [
+        { "name": "WebSockets", "link": "https://developer.mozilla.org/en-US/docs/Web/API/WebSockets_API", "icon": "lucide:radio" },
+        { "name": "HTTP Streaming", "link": "https://developer.mozilla.org/en-US/docs/Web/HTTP/Guides/Connection_management_in_HTTP_1.x", "icon": "lucide:activity" },
+        { "name": "Supabase Realtime", "link": "https://supabase.com/realtime", "icon": "simple-icons:supabase" },
+        { "name": "pg_cron", "link": "https://github.com/citusdata/pg_cron", "icon": "simple-icons:postgresql" },
+        { "name": "Stripe", "link": "https://stripe.com/", "icon": "simple-icons:stripe" }
+      ]
     },
     {
-      "name": "Linux",
-      "link": "https://www.linux.org/",
-      "icon": "custom:linux"
+      "name": "Hardware & IoT",
+      "items": [
+        { "name": "Raspberry Pi", "link": "https://www.raspberrypi.com/", "icon": "simple-icons:raspberrypi" },
+        { "name": "Arduino", "link": "https://www.arduino.cc/", "icon": "simple-icons:arduino" },
+        { "name": "ESP8266", "link": "https://www.espressif.com/", "icon": "simple-icons:espressif" },
+        { "name": "NVIDIA Jetson", "link": "https://www.nvidia.com/en-us/autonomous-machines/embedded-computing/", "icon": "simple-icons:nvidia" },
+        { "name": "LilyGO T-Camera", "link": "https://www.lilygo.cc/", "icon": "lucide:cpu" },
+        { "name": "M5StickC Plus 2", "link": "https://m5stack.com/", "icon": "lucide:cpu" },
+        { "name": "PCB / IR LED", "link": "https://www.pcbway.com/", "icon": "lucide:circuit-board" },
+        { "name": "QR Codes", "link": "https://en.wikipedia.org/wiki/QR_code", "icon": "lucide:qr-code" },
+        { "name": "NFC", "link": "https://en.wikipedia.org/wiki/Near-field_communication", "icon": "lucide:wifi" }
+      ]
     },
     {
-      "name": "Figma",
-      "link": "https://www.figma.com/",
-      "icon": "custom:figma"
+      "name": "Computer Vision & XR",
+      "items": [
+        { "name": "OpenCV", "link": "https://opencv.org/", "icon": "simple-icons:opencv" },
+        { "name": "MediaPipe", "link": "https://ai.google.dev/edge/mediapipe/solutions/guide", "icon": "simple-icons:google" },
+        { "name": "Three.js", "link": "https://threejs.org/", "icon": "simple-icons:threedotjs" },
+        { "name": "AR (browser)", "link": "https://ar-js-org.github.io/AR.js-Docs/", "icon": "lucide:glasses" }
+      ]
     },
     {
-      "name": "Notion",
-      "link": "https://www.notion.so/",
-      "icon": "custom:notion"
+      "name": "3D & Fabrication",
+      "items": [
+        { "name": "3D Printing", "link": "https://en.wikipedia.org/wiki/3D_printing", "icon": "lucide:box" },
+        { "name": "OrcaSlicer", "link": "https://orcaslicer.com/", "icon": "lucide:layers" },
+        { "name": "Meshmixer", "link": "https://meshmixer.com/", "icon": "lucide:shapes" },
+        { "name": "Blender", "link": "https://www.blender.org/", "icon": "simple-icons:blender" }
+      ]
     },
     {
-      "name": "1Password",
-      "link": "https://1password.com/",
-      "icon": "custom:onepassword"
+      "name": "Networking & Tunneling",
+      "items": [
+        { "name": "FRP", "link": "https://github.com/fatedier/frp", "icon": "lucide:network" },
+        { "name": "Cloudflare Tunnel", "link": "https://www.cloudflare.com/products/tunnel/", "icon": "simple-icons:cloudflare" }
+      ]
+    },
+    {
+      "name": "Infrastructure & OS",
+      "items": [
+        { "name": "Linux", "link": "https://www.linux.org/", "icon": "simple-icons:linux" },
+        { "name": "QEMU", "link": "https://www.qemu.org/", "icon": "simple-icons:qemu" },
+        { "name": "libvirt", "link": "https://libvirt.org/", "icon": "lucide:server" },
+        { "name": "cloud-init", "link": "https://cloud-init.io/", "icon": "lucide:cloud" },
+        { "name": "Grafana", "link": "https://grafana.com/", "icon": "simple-icons:grafana" },
+        { "name": "Git", "link": "https://git-scm.com/", "icon": "simple-icons:git" }
+      ]
     }
   ]
 }
