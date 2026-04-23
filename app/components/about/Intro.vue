@@ -19,7 +19,5 @@
         {{ $t("about.intro.part4") }}
       </p>
     </div>
-    <AboutSignature class="absolute -bottom-1/3 right-0 hidden w-40 sm:block" />
-    <AboutSignature class="black absolute -right-2 bottom-[-6rem] w-32 sm:hidden" />
   </div>
 </template>
