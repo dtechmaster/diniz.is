@@ -1,5 +1,5 @@
 {
-  "app_description": "Vitor Diniz — Arquiteto de Sistemas, Engenheiro Sênior & Pesquisador Aplicado",
+  "app_description": "Vitor Diniz — Diagnóstico e Arquitetura de Sistemas",
   "copied_to_clipboard": "Copiado para a área de transferência",
   "article_link_copied": "Link do artigo copiado",
   "email_copied": "E-mail copiado",
@@ -11,12 +11,45 @@
   "not_found": "Comando não encontrado",
   "see_more": "Ver mais",
   "soon": "Em breve",
-  "experiences": "Experiências",
+  "experiences": "Histórico",
   "contact": "Solicitar diagnóstico de sistema",
   "email": "Copiar e-mail",
   "cv": "Baixar currículo",
   "meeting": "Agendar 30 minutos",
-  "available": "Disponível para consultoria e projetos",
+  "available": "Disponível para diagnóstico e arquitetura de sistemas",
   "unavailable": "Indisponível no momento",
-  "all_rights_reserved": "Todos os direitos reservados"
+  "all_rights_reserved": "Todos os direitos reservados",
+  "selected_work": "Trabalhos Selecionados",
+  "what_i_do": {
+    "title": "O que eu realmente faço",
+    "line1": "A maioria dos sistemas falha por decisões erradas, não por código ruim.",
+    "item1": "Identifico o que está quebrado",
+    "item2": "Projeto o sistema correto",
+    "item3": "Implemento apenas o que gera impacto",
+    "cta": "Tudo começa com um diagnóstico de sistema."
+  },
+  "how_i_work": {
+    "title": "Como trabalho",
+    "step1_title": "Diagnóstico",
+    "step1_desc": "Entender o problema real antes de tocar no sistema.",
+    "step2_title": "Arquitetura",
+    "step2_desc": "Projetar a solução correta — não apenas um remendo.",
+    "step3_title": "Implementação",
+    "step3_desc": "Executar apenas o que entrega impacto. Nada mais."
+  },
+  "work_items": {
+    "automation_title": "Automação & Dados",
+    "automation_desc": "Reduzi processos manuais projetando pipelines de automação e sistemas de dados.",
+    "ai_title": "Sistemas com IA",
+    "ai_desc": "Projetei sistemas de IA para classificação, interação e suporte a decisões.",
+    "embedded_title": "Sistemas Embarcados & Tempo Real",
+    "embedded_desc": "Construí sistemas em produção com hardware, robótica e streaming em tempo real."
+  },
+  "contact_situations": {
+    "title": "Situações típicas em que ajudo",
+    "item1": "Muito trabalho manual (Excel, CSV, processos repetitivos)",
+    "item2": "Sistemas que não escalam com o crescimento",
+    "item3": "\"Queremos IA mas não sabemos como ou por onde começar\"",
+    "item4": "Ferramentas existentes que não funcionam como esperado"
+  }
 }

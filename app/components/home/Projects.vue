@@ -1,40 +1,17 @@
-<script setup lang="ts">
-import type { Collections } from '@nuxt/content'
-
-const { locale } = useI18n()
-const localePath = useLocalePath()
-
-const { data: projects } = await useAsyncData('projects', async () => {
-  const collection = ('projects_' + locale.value) as keyof Collections
-  return await queryCollection(collection).all() as Collections['projects_en'][] | Collections['projects_ja'][]
-}, {
-  watch: [locale],
-})
-</script>
-
 <template>
   <div class="flex w-full flex-col gap-6">
     <h3 class="font-newsreader italic text-white-shadow text-xl">
-      {{ $t("navigation.works") }}
+      {{ $t("selected_work") }}
     </h3>
-    <div class="flex w-full flex-col gap-4">
-      <NuxtLink
-        v-for="project in projects?.filter((work) => work.featured)"
-        :key="project.name"
-        role="link"
-        class="flex cursor-pointer items-center gap-2 rounded-lg px-4 py-2 hover:bg-neutral-900"
-        :to="project.release === 'soon' ? localePath('/') : project.link"
-        :aria-label="'go to ' + project.name + ' project website'"
-        :target="project.release === 'soon' ? '_self' : '_blank'"
+    <div class="flex w-full flex-col gap-3">
+      <div
+        v-for="item in workItems"
+        :key="item.titleKey"
+        class="flex flex-col gap-1 rounded-lg border border-white/10 bg-white/[0.03] px-4 py-3"
       >
-        <span class="whitespace-nowrap font-medium">
-          {{ project.name }}
-        </span>
-        <div class="mx-2 h-[0.1px] w-full bg-muted" />
-        <span class="whitespace-nowrap">
-          {{ project.release === "soon" ? $t("global.soon") + "..." : project.release }}
-        </span>
-      </NuxtLink>
+        <span class="text-sm font-medium text-white/90">{{ $t(item.titleKey) }}</span>
+        <span class="text-xs text-muted">{{ $t(item.descKey) }}</span>
+      </div>
     </div>
     <NuxtLinkLocale to="/works">
       <span class="font-newsreader italic text-white-shadow cursor-pointer">
@@ -43,3 +20,11 @@ const { data: projects } = await useAsyncData('projects', async () => {
     </NuxtLinkLocale>
   </div>
 </template>
+
+<script setup lang="ts">
+const workItems = [
+  { titleKey: 'work_items.automation_title', descKey: 'work_items.automation_desc' },
+  { titleKey: 'work_items.ai_title', descKey: 'work_items.ai_desc' },
+  { titleKey: 'work_items.embedded_title', descKey: 'work_items.embedded_desc' },
+]
+</script>

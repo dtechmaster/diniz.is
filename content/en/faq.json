@@ -7,15 +7,15 @@
       "questions": [
         {
           "label": "Tell me about your background.",
-          "content": "I've spent 10+ years building systems across AI, backend, and hardware. I combine research thinking with practical delivery — designing systems that work in production, not just in theory. I started programming at 11, worked across the US and Japan, led engineering teams of 5–15 people, founded an R&D-driven AI company, and exited with profit."
+          "content": "10+ years building systems in AI, backend, and hardware — in both enterprise and experimental environments. I combine research thinking with practical delivery. Worked across the US and Japan, led teams of 5–15 engineers, founded an R&D AI company, and exited with profit."
         },
         {
           "label": "What kind of teams have you led?",
-          "content": "Teams of 5–15 engineers across AI, backend, and embedded systems — both inside established organizations and within my own company. I focused on architecture, system design, and aligning execution with real-world constraints."
+          "content": "Teams of 5–15 engineers across AI, backend, and embedded systems. Focus on architecture, system design, and aligning execution with real-world constraints."
         },
         {
           "label": "What happened with your company?",
-          "content": "I built an R&D-driven engineering company focused on AI and systems. We delivered real products, tested new ideas, and operated as a fast experimental environment. I exited by selling the intellectual property at a profit."
+          "content": "Built an R&D-driven engineering company, delivered real products, and exited by selling its intellectual property at a profit."
         }
       ]
     },
@@ -24,11 +24,11 @@
       "questions": [
         {
           "label": "What do you actually work with?",
-          "content": "I work across backend systems, AI integration, and automation — primarily using TypeScript, Python, and cloud infrastructure. I also have deep experience in embedded systems, computer vision, and hardware-integrated platforms when needed."
+          "content": "Backend systems, AI integration, and automation — primarily TypeScript, Python, and cloud infrastructure. Deep experience in embedded systems and computer vision when needed."
         },
         {
-          "label": "What domains have you shipped production work in?",
-          "content": "Automation & data systems, AI-driven tools for classification and decision support, computer vision pipelines, real-time streaming, embedded systems (Arduino, Raspberry Pi, Jetson), and full-stack platforms across enterprise and startup environments."
+          "label": "What domains have you shipped in?",
+          "content": "Automation pipelines, AI classification and decision support, computer vision, real-time streaming, embedded systems (Arduino, Raspberry Pi, Jetson), and full-stack platforms."
         }
       ]
     },
@@ -37,11 +37,11 @@
       "questions": [
         {
           "label": "What work are you open to?",
-          "content": "System diagnosis & architecture design, AI and automation strategy, and high-impact consulting — short-term or recurring. Also open to contract and selective full-time roles where technical depth and ownership belong at the table."
+          "content": "System diagnosis and architecture design, AI and automation strategy, high-impact consulting — short-term or recurring. Also open to contract and selective full-time roles."
         },
         {
           "label": "What languages do you speak?",
-          "content": "Portuguese (native), English (fluent), Japanese (business level, JLPT N2), and Spanish (conversational)."
+          "content": "Portuguese (native), English (fluent), Japanese (business, JLPT N2), Spanish (conversational)."
         }
       ]
     }

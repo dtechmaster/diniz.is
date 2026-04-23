@@ -63,6 +63,21 @@ async function onSubmit(event: FormSubmitEvent<Schema>) {
       />
     </h2>
     <Divider class="mb-8 mt-2" />
+    <div class="mb-8 flex flex-col gap-3 rounded-xl border border-white/10 bg-white/[0.03] p-6 max-w-[40rem]">
+      <h3 class="text-sm font-semibold text-white/90">
+        {{ $t("contact_situations.title") }}
+      </h3>
+      <ul class="flex flex-col gap-2">
+        <li
+          v-for="key in ['item1', 'item2', 'item3', 'item4']"
+          :key="key"
+          class="flex items-start gap-3 text-sm text-muted"
+        >
+          <span class="mt-1.5 size-1.5 shrink-0 rounded-full bg-white/40" />
+          <span>{{ $t(`contact_situations.${key}`) }}</span>
+        </li>
+      </ul>
+    </div>
     <div class="flex flex-col sm:items-center sm:justify-between">
       <UForm
         :state

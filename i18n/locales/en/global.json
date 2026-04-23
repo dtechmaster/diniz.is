@@ -1,5 +1,5 @@
 {
-  "app_description": "Vitor Diniz — AI Systems Architect, Senior Engineer & Applied Researcher",
+  "app_description": "Vitor Diniz — System Diagnosis & Architecture",
   "copied_to_clipboard": "Copied to clipboard",
   "article_link_copied": "Article link copied to clipboard",
   "email_copied": "Email copied to clipboard",
@@ -11,12 +11,45 @@
   "not_found": "Command not found",
   "see_more": "See more",
   "soon": "Coming soon",
-  "experiences": "Experiences",
+  "experiences": "Track Record",
   "contact": "Get a system diagnosis",
   "email": "Copy email",
   "cv": "Download resume",
   "meeting": "Book a 30-min call",
-  "available": "Available for consulting & system design",
-  "unavailable": "Currently working on other awesome projects",
-  "all_rights_reserved": "All rights reserved"
+  "available": "Available for system diagnosis & architecture",
+  "unavailable": "Currently unavailable",
+  "all_rights_reserved": "All rights reserved",
+  "selected_work": "Selected Work",
+  "what_i_do": {
+    "title": "What I actually do",
+    "line1": "Most systems fail due to wrong decisions, not bad code.",
+    "item1": "Identify what's broken",
+    "item2": "Design the correct system",
+    "item3": "Implement only what matters",
+    "cta": "Everything starts with a system diagnosis."
+  },
+  "how_i_work": {
+    "title": "How I work",
+    "step1_title": "Diagnosis",
+    "step1_desc": "Understand the real problem before touching the system.",
+    "step2_title": "Architecture",
+    "step2_desc": "Design the correct solution — not just a fix.",
+    "step3_title": "Implementation",
+    "step3_desc": "Execute only what delivers impact. Nothing else."
+  },
+  "work_items": {
+    "automation_title": "Automation & Data Systems",
+    "automation_desc": "Reduced manual workflows by designing automation pipelines and data systems.",
+    "ai_title": "AI-Assisted Systems",
+    "ai_desc": "Designed AI systems for classification, interaction, and decision support.",
+    "embedded_title": "Embedded & Real-Time Systems",
+    "embedded_desc": "Built production systems across hardware, robotics, and real-time streaming."
+  },
+  "contact_situations": {
+    "title": "Typical situations I help with",
+    "item1": "Too much manual work (Excel, CSV, repetitive processes)",
+    "item2": "Systems that don't scale under growth",
+    "item3": "\"We want AI but don't know how or where to start\"",
+    "item4": "Existing tools that aren't working as expected"
+  }
 }

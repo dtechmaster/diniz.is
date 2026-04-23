@@ -1,5 +1,5 @@
 {
-  "app_description": "Vitor Diniz — AIシステムアーキテクト・シニアエンジニア・応用研究者",
+  "app_description": "Vitor Diniz — システム診断・アーキテクチャ設計",
   "copied_to_clipboard": "クリップボードにコピーしました",
   "article_link_copied": "記事リンクをコピーしました",
   "email_copied": "メールアドレスをコピーしました",
@@ -11,12 +11,45 @@
   "not_found": "コマンドが見つかりません",
   "see_more": "もっと見る",
   "soon": "近日公開",
-  "experiences": "経歴",
+  "experiences": "実績",
   "contact": "システム診断を依頼する",
   "email": "メールをコピー",
   "cv": "履歴書をダウンロード",
   "meeting": "30分の相談を予約",
-  "available": "コンサルティング・システム設計のご相談受付中",
-  "unavailable": "現在他のプロジェクトに取り組んでいます",
-  "all_rights_reserved": "全著作権所有"
+  "available": "システム診断・アーキテクチャ設計のご相談受付中",
+  "unavailable": "現在対応不可",
+  "all_rights_reserved": "全著作権所有",
+  "selected_work": "主な実績",
+  "what_i_do": {
+    "title": "実際に何をするのか",
+    "line1": "システムの失敗は、コードではなく設計判断の誤りから生まれる。",
+    "item1": "何が壊れているかを特定する",
+    "item2": "正しいシステムを設計する",
+    "item3": "成果につながることだけを実装する",
+    "cta": "すべてはシステム診断から始まります。"
+  },
+  "how_i_work": {
+    "title": "進め方",
+    "step1_title": "診断",
+    "step1_desc": "システムに触れる前に、本当の問題を把握する。",
+    "step2_title": "アーキテクチャ",
+    "step2_desc": "応急処置ではなく、正しいソリューションを設計する。",
+    "step3_title": "実装",
+    "step3_desc": "成果をもたらすものだけを実行する。それ以外は省く。"
+  },
+  "work_items": {
+    "automation_title": "自動化・データシステム",
+    "automation_desc": "自動化パイプラインとデータシステムの設計により、手作業を削減。",
+    "ai_title": "AI活用システム",
+    "ai_desc": "分類・インタラクション・意思決定支援のためのAIシステムを設計。",
+    "embedded_title": "組み込み・リアルタイムシステム",
+    "embedded_desc": "ハードウェア・ロボティクス・リアルタイムストリーミングにわたる本番システムを構築。"
+  },
+  "contact_situations": {
+    "title": "よくあるご相談",
+    "item1": "手作業が多すぎる（Excel・CSV・繰り返し作業）",
+    "item2": "成長に対応できないシステム",
+    "item3": "「AIを導入したいが、どこから始めればいいかわからない」",
+    "item4": "既存ツールが期待通りに動いていない"
+  }
 }

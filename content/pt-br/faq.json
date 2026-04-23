@@ -7,15 +7,15 @@
       "questions": [
         {
           "label": "Fale sobre sua trajetória.",
-          "content": "Mais de 10 anos construindo sistemas em IA, backend e hardware. Combino pensamento de pesquisa com entrega prática — projetando sistemas que funcionam em produção, não só na teoria. Comecei a programar aos 11 anos, trabalhei nos EUA e no Japão, liderei equipes de 5 a 15 engenheiros, fundei uma empresa de IA orientada a P&D e saí com lucro."
+          "content": "Mais de 10 anos construindo sistemas em IA, backend e hardware — em empresas e ambientes experimentais. Combino pesquisa com entrega prática. Trabalhei nos EUA e no Japão, liderei times de 5 a 15 engenheiros, fundei uma empresa de IA orientada a P&D e saí com lucro."
         },
         {
           "label": "Que tipo de times você liderou?",
-          "content": "Times de 5 a 15 engenheiros em IA, backend e sistemas embarcados — tanto em organizações estabelecidas quanto na minha própria empresa. Foco em arquitetura, design de sistemas e alinhamento da execução com as restrições do mundo real."
+          "content": "Times de 5 a 15 engenheiros em IA, backend e sistemas embarcados. Foco em arquitetura, design de sistemas e alinhamento com restrições do mundo real."
         },
         {
           "label": "O que aconteceu com sua empresa?",
-          "content": "Construí uma empresa de engenharia focada em IA e sistemas. Entregamos produtos reais, testamos novas ideias e operamos como um ambiente experimental acelerado. Saí vendendo o patrimônio intelectual com lucro."
+          "content": "Construí uma empresa de engenharia focada em IA e sistemas, entregamos produtos reais, e saí vendendo o patrimônio intelectual com lucro."
         }
       ]
     },
@@ -24,11 +24,11 @@
       "questions": [
         {
           "label": "Com o que você trabalha de verdade?",
-          "content": "Trabalho com sistemas backend, integração de IA e automação — principalmente com TypeScript, Python e infraestrutura cloud. Também tenho experiência profunda em sistemas embarcados, visão computacional e plataformas integradas a hardware quando necessário."
+          "content": "Sistemas backend, integração de IA e automação — principalmente TypeScript, Python e infraestrutura cloud. Experiência profunda em sistemas embarcados e visão computacional quando necessário."
         },
         {
           "label": "Em quais domínios você tem trabalho em produção?",
-          "content": "Automação e pipelines de dados, ferramentas com IA para classificação e suporte a decisões, visão computacional, streaming em tempo real, sistemas embarcados (Arduino, Raspberry Pi, Jetson) e plataformas full-stack para empresas e startups."
+          "content": "Pipelines de automação, IA para classificação e suporte a decisões, visão computacional, streaming em tempo real, sistemas embarcados e plataformas full-stack."
         }
       ]
     },
@@ -37,11 +37,11 @@
       "questions": [
         {
           "label": "Que tipo de trabalho você aceita?",
-          "content": "Diagnóstico de sistemas e design de arquitetura, estratégia de IA e automação, e consultoria de alto impacto — curto prazo ou recorrente. Também aberto a contrato e posições CLT seletivas onde profundidade técnica e ownership importam."
+          "content": "Diagnóstico de sistemas e arquitetura, estratégia de IA e automação, consultoria de alto impacto. Também aberto a contrato e posições seletivas."
         },
         {
           "label": "Quais idiomas você fala?",
-          "content": "Português (nativo), Inglês (fluente), Japonês (nível empresarial, JLPT N2) e Espanhol (conversacional)."
+          "content": "Português (nativo), Inglês (fluente), Japonês (nível empresarial, JLPT N2), Espanhol (conversacional)."
         }
       ]
     }

@@ -57,10 +57,11 @@
         <div
           style="--stagger: 5"
           data-animate
-          class="mt-12 flex w-full max-w-3xl flex-col gap-4 lg:mt-16"
+          class="mt-12 flex w-full max-w-3xl flex-col gap-10 lg:mt-16"
         >
-          <!-- projects -->
+          <HomeWhatIDo />
           <HomeProjects />
+          <HomeHowIWork />
         </div>
 
         <Divider class="my-9" />
