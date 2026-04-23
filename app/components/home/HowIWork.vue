@@ -1,7 +1,11 @@
+<script setup lang="ts">
+const steps = ['diagnosis', 'architecture', 'implementation']
+</script>
+
 <template>
   <div class="flex w-full flex-col gap-6">
     <h3 class="font-newsreader italic text-white-shadow text-xl">
-      {{ $t("how_i_work.title") }}
+      {{ $t("global.how_i_work.title") }}
     </h3>
     <div class="flex flex-col gap-3 sm:flex-row">
       <div
@@ -15,17 +19,13 @@
             {{ String(i + 1).padStart(2, '0') }}
           </span>
           <span class="text-sm font-semibold" :class="i === 0 ? 'text-white' : 'text-white/80'">
-            {{ $t(`how_i_work.step${i + 1}_title`) }}
+            {{ $t(`global.how_i_work.step${i + 1}_title`) }}
           </span>
         </div>
         <p class="text-xs text-muted leading-relaxed">
-          {{ $t(`how_i_work.step${i + 1}_desc`) }}
+          {{ $t(`global.how_i_work.step${i + 1}_desc`) }}
         </p>
       </div>
     </div>
   </div>
 </template>
-
-<script setup lang="ts">
-const steps = ['diagnosis', 'architecture', 'implementation']
-</script>

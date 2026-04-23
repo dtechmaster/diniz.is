@@ -65,7 +65,7 @@ async function onSubmit(event: FormSubmitEvent<Schema>) {
     <Divider class="mb-8 mt-2" />
     <div class="mb-8 flex flex-col gap-3 rounded-xl border border-white/10 bg-white/[0.03] p-6 max-w-[40rem]">
       <h3 class="text-sm font-semibold text-white/90">
-        {{ $t("contact_situations.title") }}
+        {{ $t("global.contact_situations.title") }}
       </h3>
       <ul class="flex flex-col gap-2">
         <li
@@ -74,7 +74,7 @@ async function onSubmit(event: FormSubmitEvent<Schema>) {
           class="flex items-start gap-3 text-sm text-muted"
         >
           <span class="mt-1.5 size-1.5 shrink-0 rounded-full bg-white/40" />
-          <span>{{ $t(`contact_situations.${key}`) }}</span>
+          <span>{{ $t(`global.contact_situations.${key}`) }}</span>
         </li>
       </ul>
     </div>

@@ -1,7 +1,15 @@
+<script setup lang="ts">
+const workItems = [
+  { titleKey: 'global.work_items.automation_title', descKey: 'global.work_items.automation_desc' },
+  { titleKey: 'global.work_items.ai_title', descKey: 'global.work_items.ai_desc' },
+  { titleKey: 'global.work_items.embedded_title', descKey: 'global.work_items.embedded_desc' },
+]
+</script>
+
 <template>
   <div class="flex w-full flex-col gap-6">
     <h3 class="font-newsreader italic text-white-shadow text-xl">
-      {{ $t("selected_work") }}
+      {{ $t("global.selected_work") }}
     </h3>
     <div class="flex w-full flex-col gap-3">
       <div
@@ -20,11 +28,3 @@
     </NuxtLinkLocale>
   </div>
 </template>
-
-<script setup lang="ts">
-const workItems = [
-  { titleKey: 'work_items.automation_title', descKey: 'work_items.automation_desc' },
-  { titleKey: 'work_items.ai_title', descKey: 'work_items.ai_desc' },
-  { titleKey: 'work_items.embedded_title', descKey: 'work_items.embedded_desc' },
-]
-</script>
