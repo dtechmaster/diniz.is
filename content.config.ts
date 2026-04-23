@@ -2,39 +2,39 @@ import { defineCollection, z } from '@nuxt/content'
 import { asSeoCollection } from '@nuxtjs/seo/content'
 
 const commonContentSchema = z.object({
-  title: z.string().nonempty(),
-  description: z.string().nonempty(),
-  date: z.string().nonempty(),
+  title: z.string().min(1),
+  description: z.string().min(1),
+  date: z.string().min(1),
 })
 
 const commonArticleSchema = z.object({
-  title: z.string().nonempty(),
-  description: z.string().nonempty(),
-  date: z.string().nonempty(),
+  title: z.string().min(1),
+  description: z.string().min(1),
+  date: z.string().min(1),
   image: z.string().url(),
-  readingTime: z.string().nonempty(),
-  tags: z.array(z.string().nonempty()),
+  readingTime: z.string().min(1),
+  tags: z.array(z.string().min(1)),
 })
 
 const commonProjectSchema = z.object({
-  name: z.string().nonempty(),
+  name: z.string().min(1),
   image: z.string().url(),
-  link: z.string().nonempty(),
-  release: z.string().nonempty(),
-  date: z.string().nonempty(),
+  link: z.string().min(1),
+  release: z.string().min(1),
+  date: z.string().min(1),
   featured: z.boolean().optional(),
 })
 
 const commonFaqSchema = z.object({
-  title: z.string().nonempty(),
-  subtitle: z.string().nonempty(),
+  title: z.string().min(1),
+  subtitle: z.string().min(1),
   faqQuestions: z.array(
     z.object({
-      title: z.string().nonempty(),
+      title: z.string().min(1),
       questions: z.array(
         z.object({
-          label: z.string().nonempty(),
-          content: z.string().nonempty(),
+          label: z.string().min(1),
+          content: z.string().min(1),
         }),
       ),
     }),
@@ -104,12 +104,12 @@ export const collections = {
     schema: z.object({
       categories: z.array(
         z.object({
-          name: z.string().nonempty(),
+          name: z.string().min(1),
           items: z.array(
             z.object({
-              name: z.string().nonempty(),
+              name: z.string().min(1),
               link: z.string().url(),
-              icon: z.string().nonempty(),
+              icon: z.string().min(1),
             }),
           ),
         }),
