@@ -6,6 +6,10 @@ defineProps({
     type: Boolean,
     default: false,
   },
+  size: {
+    type: Number,
+    default: 8,
+  },
 })
 </script>
 
@@ -15,9 +19,10 @@ defineProps({
     class="flex shrink-0 items-center"
     aria-label="Go back to home page"
   >
-    <UIcon
-      name="custom:maison-hochard"
-      class="size-8"
+    <img
+      src="/logo.png"
+      alt="Vitor Diniz logo"
+      :class="`size-${size}`"
     />
     <span
       v-if="isText"
