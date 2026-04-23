@@ -1,0 +1,20 @@
+{
+  "title": "Entre em contato",
+  "description": "Vamos conversar sobre suas ideias, projetos ou qualquer outra coisa",
+  "fullname": "Nome completo",
+  "email": "E-mail",
+  "phone": "Telefone",
+  "subject": "Assunto da mensagem",
+  "message": "Mensagem",
+  "submit": "Enviar",
+  "disabled": "Você precisa configurar sua chave de API do Resend",
+  "success": "Sua mensagem foi enviada com sucesso",
+  "error": "Ops, ocorreu um erro ao enviar sua mensagem",
+  "budget": "Orçamento",
+  "subject_types": {
+    "project": "Falar sobre um projeto",
+    "bug": "Reportar um problema",
+    "question": "Fazer uma pergunta",
+    "other": "Outro"
+  }
+}

@@ -1,0 +1,16 @@
+{
+  "title": "Artigos",
+  "description": "Uma coleção dos meus textos",
+  "empty": "Nenhum artigo ainda, volte em breve!",
+  "not_found": "Nenhum artigo encontrado",
+  "not_found_description": "Não encontramos o artigo que você estava procurando.",
+  "back_link": "Voltar aos artigos",
+  "readingTime": "min de leitura",
+  "share": "Compartilhar artigo",
+  "copy_link": "Copiar link",
+  "search_article": "Buscar artigo",
+  "blog": "Blog",
+  "unknown_author": "Autor desconhecido",
+  "show_search": "Buscar",
+  "hide_search": "Fechar busca"
+}

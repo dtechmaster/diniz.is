@@ -98,6 +98,39 @@ export const collections = {
       schema: commonProjectSchema,
     }),
   ),
+  'content_pt-br': defineCollection(
+    asSeoCollection({
+      type: 'page',
+      source: {
+        include: 'pt-br/**/*.md',
+        exclude: ['pt-br/articles/*.md'],
+        prefix: '/pt-br',
+      },
+      schema: commonContentSchema,
+    }),
+  ),
+  'articles_pt-br': defineCollection(
+    asSeoCollection({
+      type: 'page',
+      source: {
+        include: 'pt-br/articles/*.md',
+        prefix: '/pt-br/articles',
+      },
+      schema: commonArticleSchema,
+    }),
+  ),
+  'projects_pt-br': defineCollection(
+    asSeoCollection({
+      type: 'data',
+      source: 'pt-br/projects/*.json',
+      schema: commonProjectSchema,
+    }),
+  ),
+  'faq_pt-br': defineCollection({
+    type: 'data',
+    source: 'pt-br/faq.json',
+    schema: commonFaqSchema,
+  }),
   stack: defineCollection({
     type: 'data',
     source: 'stack.json',

@@ -91,7 +91,7 @@ export default defineNuxtConfig({
     prerender: {
       autoSubfolderIndex: false,
       crawlLinks: true,
-      routes: ['/en', '/ja'],
+      routes: ['/en', '/ja', '/pt-br'],
     },
   },
 
@@ -111,6 +111,7 @@ export default defineNuxtConfig({
     locales: [
       { code: 'en', name: 'English', language: 'en-US' },
       { code: 'ja', name: 'Japanese', language: 'ja-JP' },
+      { code: 'pt-br', name: 'Português', language: 'pt-BR' },
     ],
     detectBrowserLanguage: {
       useCookie: true,
