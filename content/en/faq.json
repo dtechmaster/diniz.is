@@ -7,15 +7,15 @@
       "questions": [
         {
           "label": "Tell me about your background.",
-          "content": "10+ years across AI, backend, embedded systems, and hardware-integrated platforms — in both enterprise and experimental environments. I started programming at 11, worked across the US and Japan, led engineering teams of 5–15 people, founded an R&D-driven AI company, and exited with profit. I combine technical depth with a research mindset and real delivery experience."
+          "content": "I've spent 10+ years building systems across AI, backend, and hardware. I combine research thinking with practical delivery — designing systems that work in production, not just in theory. I started programming at 11, worked across the US and Japan, led engineering teams of 5–15 people, founded an R&D-driven AI company, and exited with profit."
         },
         {
           "label": "What kind of teams have you led?",
-          "content": "Both inside established organizations and within my own company. In Japan I led teams of 5–15 engineers across AI, embedded, and web systems — owning architecture, framework design, and coordination. As a founder I also built and led my own team across R&D projects and client work."
+          "content": "Teams of 5–15 engineers across AI, backend, and embedded systems — both inside established organizations and within my own company. I focused on architecture, system design, and aligning execution with real-world constraints."
         },
         {
           "label": "What happened with your company?",
-          "content": "I founded an R&D-driven AI and systems engineering company, ran it as an experimental operation delivering real products, and successfully sold its intellectual property at a profit. I now want to bring that founder-level ownership and R&D mindset into a new team."
+          "content": "I built an R&D-driven engineering company focused on AI and systems. We delivered real products, tested new ideas, and operated as a fast experimental environment. I exited by selling the intellectual property at a profit."
         }
       ]
     },
@@ -23,12 +23,12 @@
       "title": "Skills & Work",
       "questions": [
         {
-          "label": "What technologies do you work with?",
-          "content": "TypeScript/JavaScript (Vue, Nuxt, Node.js), Python (AI/automation), C/C++ (embedded), C#/.NET, Java/Kotlin, OpenCV, TensorFlow, AWS/GCP/Azure, Docker, Linux, WebRTC."
+          "label": "What do you actually work with?",
+          "content": "I work across backend systems, AI integration, and automation — primarily using TypeScript, Python, and cloud infrastructure. I also have deep experience in embedded systems, computer vision, and hardware-integrated platforms when needed."
         },
         {
           "label": "What domains have you shipped production work in?",
-          "content": "Computer vision and image analysis pipelines, medical posture analysis, autonomous driving systems, WebRTC live streaming, robot control, embedded systems (Arduino/Raspberry Pi/Jetson), matching platforms, EC platforms, and cloud backend systems."
+          "content": "Automation & data systems, AI-driven tools for classification and decision support, computer vision pipelines, real-time streaming, embedded systems (Arduino, Raspberry Pi, Jetson), and full-stack platforms across enterprise and startup environments."
         }
       ]
     },
@@ -36,12 +36,12 @@
       "title": "Availability",
       "questions": [
         {
-          "label": "What roles are you open to?",
-          "content": "Senior Software Engineer, AI/Computer Vision Engineer, Systems Architect, Tech Lead, or Applied AI/Systems Researcher. Open to full-time, contract, or consulting. Available in Japan or remote."
+          "label": "What work are you open to?",
+          "content": "System diagnosis & architecture design, AI and automation strategy, and high-impact consulting — short-term or recurring. Also open to contract and selective full-time roles where technical depth and ownership belong at the table."
         },
         {
           "label": "What languages do you speak?",
-          "content": "Portuguese (native), English (fluent, TOEIC 892), Japanese (business level, JLPT N2), and Spanish (conversational)."
+          "content": "Portuguese (native), English (fluent), Japanese (business level, JLPT N2), and Spanish (conversational)."
         }
       ]
     }
