@@ -4,7 +4,7 @@ export default defineAppConfig({
     available: true,
   },
   profile: {
-    name: 'Vitor Diniz',
+    name: 'Vitor Baldaia Diniz',
     job: 'AI Systems Architect / Senior Engineer / Applied Researcher',
     email: 'diniz@djin-tech.com',
     phone: '+81 70 8855 7401',
@@ -18,7 +18,7 @@ export default defineAppConfig({
     spotify: '',
   },
   seo: {
-    title: 'Vitor Diniz — AI Systems Architect & Senior Software Engineer',
+    title: 'Vitor Baldaia Diniz — AI Systems Architect & Senior Software Engineer',
     description: 'Senior Software Engineer, Systems Architect, and Applied Researcher with 10+ years of experience across AI, backend, embedded systems, and hardware-integrated platforms. R&D mindset. Founder with successful exit.',
     url: 'https://diniz.is',
   },

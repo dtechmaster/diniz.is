@@ -21,7 +21,7 @@ defineProps({
   >
     <img
       src="/logo.png"
-      alt="Vitor Diniz logo"
+      alt="Vitor Baldaia Diniz logo"
       :class="`size-${size}`"
     />
     <span

@@ -1,4 +1,4 @@
-# Vitor Diniz (BALDAIA DINIZ VITOR)
+# Vitor Baldaia Diniz (BALDAIA DINIZ VITOR)
 
 **AI Systems Architect / Senior Software Engineer / Tech Lead**
 
