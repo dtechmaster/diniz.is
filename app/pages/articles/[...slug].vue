@@ -57,6 +57,13 @@ defineOgImage({
       </span>
     </NuxtLinkLocale>
     <article class="writing mx-auto px-4 sm:max-w-2xl md:max-w-3xl lg:max-w-4xl">
+      <NuxtImg
+        v-if="page?.image"
+        :src="page.image"
+        :alt="page.title"
+        width="1200"
+        class="mb-6 w-full rounded-xl object-cover max-h-72"
+      />
       <h1 class="text-2xl font-bold">
         {{ page?.title }}
       </h1>
