@@ -39,6 +39,9 @@ const submitting = ref(false)
 const submitError = ref('')
 const submitted = ref(false)
 
+const editingTitle = ref(false)
+const editingDescription = ref(false)
+
 const EXAMPLES = [
   'Contact form with name, email and message',
   'Event RSVP with name, dietary restrictions and +1 option',
@@ -170,6 +173,92 @@ function selectItems(field: IField) {
   return field.options?.map(o => ({ label: o, value: o })) ?? []
 }
 //#endregion
+
+//#region Export
+function escapeHtml(str: string): string {
+  return String(str ?? '')
+    .replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;')
+}
+
+function buildFieldHtml(field: IField): string {
+  const req = field.required ? ' required' : ''
+  const ph = field.placeholder ? ` placeholder="${escapeHtml(field.placeholder)}"` : ''
+  const id = `f-${field.key}`
+  const desc = field.description ? `<p class="desc">${escapeHtml(field.description)}</p>` : ''
+  const reqMark = field.required ? ' <span class="req">*</span>' : ''
+
+  let input: string
+  if (field.type === 'boolean') {
+    input = `<label class="cb"><input type="checkbox" name="${field.key}" id="${id}"${req}> ${escapeHtml(field.placeholder ?? field.label)}</label>`
+  }
+  else if (field.type === 'select') {
+    const opts = (field.options ?? []).map(o => `<option value="${escapeHtml(o)}">${escapeHtml(o)}</option>`).join('')
+    input = `<select name="${field.key}" id="${id}"${req}><option value="">Select an option</option>${opts}</select>`
+  }
+  else if (field.type === 'textarea') {
+    input = `<textarea name="${field.key}" id="${id}" rows="4"${ph}${req}></textarea>`
+  }
+  else {
+    input = `<input type="${field.type === 'string' ? 'text' : field.type}" name="${field.key}" id="${id}"${ph}${req}>`
+  }
+
+  return `<div class="field"><label for="${id}">${escapeHtml(field.label)}${reqMark}</label>${desc}${input}</div>`
+}
+
+function buildHtml(s: IFormSchema): string {
+  const fields = s.fields.map(buildFieldHtml).join('\n      ')
+  const desc = s.description ? `<p class="form-desc">${escapeHtml(s.description)}</p>` : ''
+  return `<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>${escapeHtml(s.title)}</title>
+  <style>
+    *,*::before,*::after{box-sizing:border-box}
+    body{font-family:system-ui,-apple-system,sans-serif;background:#0f0f11;color:#e5e5e5;margin:0;padding:2rem 1rem;min-height:100vh}
+    .wrap{max-width:600px;margin:0 auto}
+    h1{font-size:2rem;font-weight:600;margin:0 0 .4rem}
+    .form-desc{color:#a0a0a8;font-size:.9rem;margin:0 0 2rem}
+    form{display:flex;flex-direction:column;gap:1.25rem}
+    .field{display:flex;flex-direction:column;gap:.35rem}
+    label{font-size:.875rem;font-weight:500}
+    .req{color:#f87171}
+    .desc{font-size:.8rem;color:#a0a0a8;margin:0}
+    input:not([type=checkbox]),textarea,select{background:#1a1a1f;border:1px solid #2e2e36;border-radius:8px;color:#e5e5e5;font-size:.9rem;padding:.6rem .75rem;width:100%;outline:none;transition:border-color .15s;font-family:inherit}
+    input:not([type=checkbox]):focus,textarea:focus,select:focus{border-color:#6366f1}
+    .cb{display:flex;align-items:center;gap:.5rem;font-size:.875rem;cursor:pointer}
+    hr{border:none;border-top:1px solid #2e2e36;margin:.25rem 0}
+    button{background:#e5e5e5;color:#0f0f11;border:none;border-radius:8px;font-size:.875rem;font-weight:600;padding:.65rem 1.5rem;cursor:pointer;align-self:flex-end;transition:opacity .15s}
+    button:hover{opacity:.85}
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <h1>${escapeHtml(s.title)}</h1>
+    ${desc}
+    <form>
+      ${fields}
+      <hr>
+      <button type="submit">Submit</button>
+    </form>
+  </div>
+</body>
+</html>`
+}
+
+function exportToHtml() {
+  if (!schema.value) return
+  const html = buildHtml(schema.value)
+  const blob = new Blob([html], { type: 'text/html' })
+  const url = URL.createObjectURL(blob)
+  const a = document.createElement('a')
+  a.href = url
+  a.download = `${schema.value.title.toLowerCase().replace(/\s+/g, '-')}.html`
+  a.click()
+  URL.revokeObjectURL(url)
+}
+//#endregion
 </script>
 
 <template>
@@ -242,22 +331,92 @@ function selectItems(field: IField) {
 
       <!--#region Form Header -->
       <div class="flex items-start justify-between gap-4">
-        <div class="flex flex-col gap-1">
-          <h1 class="font-newsreader italic text-white-shadow text-3xl">
-            {{ schema.title }}
-          </h1>
-          <p v-if="schema.description" class="text-muted text-sm">
-            {{ schema.description }}
-          </p>
+        <div class="flex flex-col gap-2 flex-1 min-w-0">
+
+          <!--#region Editable Title -->
+          <div class="group flex items-center gap-2">
+            <h1
+              v-if="!editingTitle"
+              class="font-newsreader italic text-white-shadow text-3xl cursor-pointer truncate"
+              @click="editingTitle = true"
+            >
+              {{ schema.title }}
+            </h1>
+            <UInput
+              v-else
+              v-model="schema.title"
+              autofocus
+              size="xl"
+              class="flex-1"
+              @blur="editingTitle = false"
+              @keydown.enter="editingTitle = false"
+              @keydown.escape="editingTitle = false"
+            />
+            <UButton
+              v-if="!editingTitle"
+              icon="heroicons:pencil-square"
+              size="xs"
+              color="neutral"
+              variant="ghost"
+              class="opacity-0 group-hover:opacity-100 transition-opacity shrink-0"
+              @click="editingTitle = true"
+            />
+          </div>
+          <!--#endregion -->
+
+          <!--#region Editable Description -->
+          <div class="group flex items-center gap-2">
+            <p
+              v-if="!editingDescription"
+              class="text-muted text-sm cursor-pointer"
+              :class="{ 'italic opacity-40': !schema.description }"
+              @click="editingDescription = true"
+            >
+              {{ schema.description || 'Add a description…' }}
+            </p>
+            <UInput
+              v-else
+              v-model="schema.description"
+              autofocus
+              size="sm"
+              class="flex-1"
+              placeholder="Form description"
+              @blur="editingDescription = false"
+              @keydown.enter="editingDescription = false"
+              @keydown.escape="editingDescription = false"
+            />
+            <UButton
+              v-if="!editingDescription"
+              icon="heroicons:pencil-square"
+              size="xs"
+              color="neutral"
+              variant="ghost"
+              class="opacity-0 group-hover:opacity-100 transition-opacity shrink-0"
+              @click="editingDescription = true"
+            />
+          </div>
+          <!--#endregion -->
+
         </div>
-        <UButton
-          label="Regenerate"
-          leading-icon="heroicons:arrow-left"
-          size="xs"
-          color="neutral"
-          variant="ghost"
-          @click="reset"
-        />
+
+        <div class="flex items-center gap-2 shrink-0">
+          <UButton
+            label="Export HTML"
+            leading-icon="heroicons:code-bracket"
+            size="xs"
+            color="neutral"
+            variant="outline"
+            @click="exportToHtml"
+          />
+          <UButton
+            label="Regenerate"
+            leading-icon="heroicons:arrow-left"
+            size="xs"
+            color="neutral"
+            variant="ghost"
+            @click="reset"
+          />
+        </div>
       </div>
       <!--#endregion -->
 

@@ -11,6 +11,10 @@ export default defineNuxtConfig({
     'vue-sonner/nuxt',
   ],
 
+  vueSonner: {
+    css: false,
+  },
+
   imports: {
     presets: [
       {
@@ -24,7 +28,7 @@ export default defineNuxtConfig({
     enabled: true,
   },
 
-  css: ['~/assets/style/main.css'],
+  css: ['~/assets/style/main.css', '~/assets/style/sonner.css'],
 
   site: {
     url: 'https://diniz.is',
@@ -76,7 +80,7 @@ export default defineNuxtConfig({
   vite: {
     optimizeDeps: {
       exclude: ['phaser'],
-      include: ['slugify'],
+      include: ['slugify', 'extend', 'debug', 'ms', 'inherits'],
     },
   },
 
