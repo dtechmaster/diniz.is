@@ -7,7 +7,7 @@ const { locale, t, localeProperties } = useI18n()
 
 const slug = computed(() => Array.isArray(route.params.slug) ? route.params.slug as string[] : [route.params.slug as string])
 const path = computed(() => withLeadingSlash(joinURL(locale.value, 'articles', ...slug.value)))
-const collection = computed(() => `articles_${locale.value}` as keyof Collections)
+const collection = computed(() => `articles_${locale.value.replace(/-/g, '_')}` as keyof Collections)
 
 const { data: page } = await useAsyncData(path.value, async () =>
   await queryCollection(collection.value).path(path.value).first() as Collections['articles_en'] | Collections['articles_ja'],

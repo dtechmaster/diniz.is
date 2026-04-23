@@ -8,7 +8,7 @@ const showSearch = ref(false)
 const { locale } = useI18n()
 
 const { data: articles } = await useAsyncData('articles-' + locale.value, async () => {
-  const collection = ('articles_' + locale.value) as keyof Collections
+  const collection = ('articles_' + locale.value.replace(/-/g, '_')) as keyof Collections
   return await queryCollection(collection).all() as Collections['articles_en'][] | Collections['articles_ja'][]
 }, {
   watch: [locale],

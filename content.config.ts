@@ -98,7 +98,7 @@ export const collections = {
       schema: commonProjectSchema,
     }),
   ),
-  'content_pt-br': defineCollection(
+  content_pt_br: defineCollection(
     asSeoCollection({
       type: 'page',
       source: {
@@ -109,7 +109,7 @@ export const collections = {
       schema: commonContentSchema,
     }),
   ),
-  'articles_pt-br': defineCollection(
+  articles_pt_br: defineCollection(
     asSeoCollection({
       type: 'page',
       source: {
@@ -119,14 +119,14 @@ export const collections = {
       schema: commonArticleSchema,
     }),
   ),
-  'projects_pt-br': defineCollection(
+  projects_pt_br: defineCollection(
     asSeoCollection({
       type: 'data',
       source: 'pt-br/projects/*.json',
       schema: commonProjectSchema,
     }),
   ),
-  'faq_pt-br': defineCollection({
+  faq_pt_br: defineCollection({
     type: 'data',
     source: 'pt-br/faq.json',
     schema: commonFaqSchema,
