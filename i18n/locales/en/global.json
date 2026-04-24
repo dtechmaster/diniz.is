@@ -19,7 +19,7 @@
   "available": "Available for system diagnosis & architecture",
   "unavailable": "Currently unavailable",
   "all_rights_reserved": "All rights reserved",
-  "selected_work": "Selected Work",
+  "selected_work": "Recent Work",
   "what_i_do": {
     "title": "What I actually do",
     "line1": "Most systems fail due to wrong decisions, not bad code.",
